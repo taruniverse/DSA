@@ -13,17 +13,25 @@
 
 // Output: false
 
- 
-
 // Constraints:
 
 // 1 <= s.length, t.length <= 5 * 104
 // s and t consist of lowercase English letters.
 
+var isAnagram = function (s, t) {
+  if (s.length !== t.length) return false;
+  const count = new Array(26).fill(0);
 
-var isAnagram = function(s, t) {
-    if(s.length !== t.length) return false;
-    
+  for (let i = 0; i < s.length; i++) {
+    count[s.charCodeAt(i) - 97]++;
+    count[t.charCodeAt(i) - 97]--;
+  }
+
+  for (let num of count) {
+    if (num !== 0) return false;
+  }
+
+  return true;
 };
 
-isAnagram(" ","nagaram")
+console.log(isAnagram("anagram", "nagaram"));

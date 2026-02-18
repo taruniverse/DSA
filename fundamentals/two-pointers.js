@@ -35,21 +35,42 @@ console.log(twoSum([0, 0, 3, 4], 0));
 var reverseString = function (s) {
   let left = 0;
   let right = s.length - 1;
-  const temp = [];
 
-  //
-  // while (left <= right) {
-  //   // console.log(s[left], s[right]);
+  while (left < right) {
+    let temp = "";
+    temp = s[left];
+    s[left] = s[right];
+    s[right] = temp;
+    left++;
+    right--;
+  }
 
-  //   if (temp.length <= s.length) {
-  //     temp.push(s[right]);
-  //     console.log(s[left]);
-  //     left++;
-  //   } else if (temp.length < s.length) {
-  //     right--;
-  //   }
-  // }
-  // return temp;
+  return s;
 };
 
 console.log(reverseString(["h", "e", "l", "l", "o"]));
+
+// question 3 - 977. Squares of a Sorted Array
+var sortedSquares = function (nums) {
+  let n = nums.length;
+  let result = new Array(n);
+
+  let left = 0;
+  let right = n - 1;
+  let position = n - 1;
+
+  while (left <= right) {
+    if (Math.abs(nums[left]) > Math.abs(nums[right])) {
+      result[position] = nums[left] * nums[left];
+      left++;
+    } else {
+      result[position] = nums[right] * nums[right];
+      right--;
+    }
+    position--;
+  }
+
+  return result;
+};
+
+console.log(sortedSquares([-4, -1, 0, 3, 10]));

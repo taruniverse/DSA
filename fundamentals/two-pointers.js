@@ -74,3 +74,22 @@ var sortedSquares = function (nums) {
 };
 
 console.log(sortedSquares([-4, -1, 0, 3, 10]));
+
+// Question 4 - Remove Duplicates from Sorted Array
+var removeDuplicates = function (nums) {
+  if (nums.length == 0) return 0;
+  let i = 0;
+  for (let j = 1; j < nums.length; j++) {
+    if (nums[j] !== nums[i]) {
+      i++;
+      nums[i] = nums[j];
+    }
+  }
+  return i + 1;
+};
+console.log(removeDuplicates([1, 1, 2]));
+
+// Question 5 - 27. Remove Element
+var removeElement = function (nums, val) {};
+
+console.log(removeElement([3, 2, 2, 3], 3));

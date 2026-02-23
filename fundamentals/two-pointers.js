@@ -90,6 +90,16 @@ var removeDuplicates = function (nums) {
 console.log(removeDuplicates([1, 1, 2]));
 
 // Question 5 - 27. Remove Element
-var removeElement = function (nums, val) {};
+var removeElement = function (nums, val) {
+  if (nums.length === 0) return 0;
+  let k = 0;
+  for (let j = 0; j < nums.length; j++) {
+    if (nums[j] !== val) {
+      nums[k] = nums[j];
+      k++;
+    }
+  }
+  return k;
+};
 
 console.log(removeElement([3, 2, 2, 3], 3));

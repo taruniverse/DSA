@@ -103,3 +103,51 @@ var removeElement = function (nums, val) {
 };
 
 console.log(removeElement([3, 2, 2, 3], 3));
+
+// Question 6 - 283. Move Zeroes
+var moveZeroes = function (nums) {
+  if (nums.length === 0) return nums;
+  let k = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      nums[k] = nums[i];
+      k++;
+    }
+  }
+  for (let j = k; j < nums.length; j++) {
+    nums[j] = 0;
+  }
+  return nums;
+};
+
+console.log(moveZeroes([0, 1, 0, 3, 12]));
+
+// Question 7 - 141. Linked List Cycle
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+var hasCycle = function (head) {
+  let slow = head;
+  let fast = head;
+  while (fast !== null && fast.next !== null) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (fast === slow) {
+      return true;
+    }
+  }
+  return false;
+};
+
+let node1 = new ListNode(3);
+let node2 = new ListNode(2);
+let node3 = new ListNode(0);
+let node4 = new ListNode(-4);
+
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+node4.next = node2;
+
+console.log(hasCycle(node1)); // true

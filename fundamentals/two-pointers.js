@@ -151,3 +151,22 @@ node3.next = node4;
 node4.next = node2;
 
 console.log(hasCycle(node1)); // true
+
+// Question 8 - 876. Middle of the Linked List
+var middleNode = function (midHead) {
+  let slow = midHead;
+  let fast = midHead;
+  while (fast !== null && fast.next !== null) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return slow;
+};
+
+// Question 9 - 242. Valid Anagram
+
+var isAnagram = function (s, t) {
+  if (s.length !== t.length) return false;
+};
+
+console.log(isAnagram("anagram", "nagaram"));

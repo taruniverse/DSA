@@ -167,6 +167,30 @@ var middleNode = function (midHead) {
 
 var isAnagram = function (s, t) {
   if (s.length !== t.length) return false;
+  let hash = new Map();
+  for (let i = 0; i < s.length; i++) {
+    if (!hash.has(s[i])) {
+      hash.set(s[i], 1);
+    } else {
+      hash.set(s[i], hash.get(s[i]) + 1);
+    }
+  }
+
+  for (let k = 0; k < t.length; k++) {
+    if (!hash.has(t[k])) {
+      return false;
+    }
+
+    let count = hash.get(t[k]);
+
+    if (count === 0) {
+      return false;
+    }
+
+    hash.set(t[k], count - 1);
+  }
+
+  return true;
 };
 
 console.log(isAnagram("anagram", "nagaram"));

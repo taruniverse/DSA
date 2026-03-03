@@ -1,7 +1,5 @@
 // Given an array of strings strs, group the anagrams together. You can return the answer in any order.
 
- 
-
 // Example 1:
 
 // Input: strs = ["eat","tea","tan","ate","nat","bat"]
@@ -25,26 +23,24 @@
 
 // Output: [["a"]]
 
- 
-
 // Constraints:
 
 // 1 <= strs.length <= 104
 // 0 <= strs[i].length <= 100
 // strs[i] consists of lowercase English letters.
 
-var groupAnagrams = function(strs) {
-    const anagram = new Map();
-    for(let char of strs) {
-        const sortedStr = char.split('').sort().join('');
-        if(!anagram.has(sortedStr)) {
-            anagram.set(sortedStr,[char])
-        } else {
-            anagram.get(sortedStr).push(char)
-        }
+var groupAnagrams = function (strs) {
+  const anagram = new Map();
+  for (let char of strs) {
+    const sortedStr = char.split("").sort().join("");
+    if (!anagram.has(sortedStr)) {
+      anagram.set(sortedStr, [char]);
+    } else {
+      anagram.get(sortedStr).push(char);
     }
+  }
 
-    return [...anagram.values()];
+  return [...anagram.values()];
 };
 
-groupAnagrams(["eat","tea","tan","ate","nat","bat"])
+groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]);

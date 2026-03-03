@@ -166,28 +166,45 @@ var middleNode = function (midHead) {
 // Question 9 - 242. Valid Anagram
 
 var isAnagram = function (s, t) {
+  // worst case
+  // if (s.length !== t.length) return false;
+  // let hash = new Map();
+  // for (let i = 0; i < s.length; i++) {
+  //   if (!hash.has(s[i])) {
+  //     hash.set(s[i], 1);
+  //   } else {
+  //     hash.set(s[i], hash.get(s[i]) + 1);
+  //   }
+  // }
+
+  // for (let k = 0; k < t.length; k++) {
+  //   if (!hash.has(t[k])) {
+  //     return false;
+  //   }
+
+  //   let count = hash.get(t[k]);
+
+  //   if (count === 0) {
+  //     return false;
+  //   }
+
+  //   hash.set(t[k], count - 1);
+  // }
+
+  // return true;
+
+  // best case
   if (s.length !== t.length) return false;
-  let hash = new Map();
-  for (let i = 0; i < s.length; i++) {
-    if (!hash.has(s[i])) {
-      hash.set(s[i], 1);
-    } else {
-      hash.set(s[i], hash.get(s[i]) + 1);
-    }
+
+  const count = {};
+
+  for (let char of s) {
+    count[char] = (count[char] || 0) + 1;
   }
 
-  for (let k = 0; k < t.length; k++) {
-    if (!hash.has(t[k])) {
-      return false;
-    }
-
-    let count = hash.get(t[k]);
-
-    if (count === 0) {
-      return false;
-    }
-
-    hash.set(t[k], count - 1);
+  for (let char of t) {
+    if (!count[char]) return false;
+    count[char]--;
   }
 
   return true;

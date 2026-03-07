@@ -252,3 +252,24 @@ var maxProfit = function (prices) {
 };
 
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+
+// Question 12 - 11. Container With Most Water
+
+var maxArea = function (height) {
+  let left = 0;
+  let right = height.length - 1;
+  let maxArea = 0;
+  while (left < right) {
+    let width = right - left;
+    let area = width * Math.min(height[left], height[right]);
+    maxArea = Math.max(maxArea, area);
+
+    if (height[left] < height[right]) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+  return maxArea;
+};
+console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]));
